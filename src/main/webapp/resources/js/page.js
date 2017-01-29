@@ -67,11 +67,10 @@ function sendData(element, name, id) {
         }
     }
 
-
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "/page",
+        url: "/customers/",
         data: JSON.stringify(data),
         success: function (data) {
             if (data == 'OK') {
