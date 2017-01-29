@@ -23,11 +23,10 @@ public class CustomerController {
     public String listCustomerService(Model model) {
         model.addAttribute("customer", new Customer());
         model.addAttribute("listCustomers", this.customerService.listCustomers());
-
         return "customers";
     }
 
-    @RequestMapping(value = "/customers", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
     @ResponseBody
     public void page(@RequestBody String data, @ModelAttribute PhoneNumber phoneNumber) {
         JSONObject jsonObject = new JSONObject(data);
