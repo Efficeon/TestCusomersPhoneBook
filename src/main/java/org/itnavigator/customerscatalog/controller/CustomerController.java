@@ -26,14 +26,6 @@ public class CustomerController {
         return "customers";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    String update(@ModelAttribute Container container){
-        List<Customer> list = container.getList();
-        customerService.updateAll(list);
-        System.out.println(list.toString());
-        return "redirect:/";
-    }
-
     @RequestMapping(value = "/updateAll", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     Container updateAll(@RequestBody Container container){
