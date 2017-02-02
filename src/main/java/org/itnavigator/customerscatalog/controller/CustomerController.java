@@ -1,38 +1,62 @@
 package org.itnavigator.customerscatalog.controller;
 
+import org.itnavigator.customerscatalog.model.Container;
 import org.itnavigator.customerscatalog.model.Customer;
-import org.itnavigator.customerscatalog.model.PhoneNumber;
 import org.itnavigator.customerscatalog.service.CustomerService;
-import org.itnavigator.customerscatalog.service.PhoneNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.json.JSONObject;
+
+import java.util.List;
 
 @Controller
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
-    @Autowired
-    private PhoneNumberService phoneNumberService;
 
-    @RequestMapping(value = "/customers", method = RequestMethod.GET)
-    public String listCustomerService(Model model) {
-        model.addAttribute("customer", new Customer());
-        model.addAttribute("listCustomers", this.customerService.listCustomers());
+    @RequestMapping("/")
+    String test(Model model){
+
+        List<Customer> list = customerService.listCustomers();
+        Container containerList = new Container();
+        containerList.setList(list);
+        model.addAttribute("container", containerList);
         return "customers";
     }
 
-    @RequestMapping(value = "/customers", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    String update(@ModelAttribute Container container){
+        List<Customer> list = container.getList();
+        for (Customer customer : list){
+            System.out.println(customer.getId());
+            System.out.println(customer.getName());
+            System.out.println(customer.getPhoneNumber().getId());
+            System.out.println(customer.getPhoneNumber().getNumber());
+            System.out.println(customer.getPhoneNumber().getType());
+            System.out.println(customer.getPhoneNumber().getDescription());
+        }
+        customerService.updateAll(list);
+        System.out.println(list.toString());
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/updateAll", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    public void page(@RequestBody String data, @ModelAttribute PhoneNumber phoneNumber) {
-        JSONObject jsonObject = new JSONObject(data);
-        phoneNumber.setId(jsonObject.getInt("id"));
-        phoneNumber.setNumber(jsonObject.getString("number"));
-        phoneNumber.setType(jsonObject.getString("type"));
-        phoneNumber.setDescription(jsonObject.getString("comment"));
-        phoneNumberService.update(phoneNumber);
+    Container updateAll(@RequestBody Container container){
+        List<Customer> list = container.getList();
+        for (Customer customer : list){
+            System.out.println(customer.getId());
+            System.out.println(customer.getName());
+            System.out.println(customer.getPhoneNumber().getId());
+            System.out.println(customer.getPhoneNumber().getNumber());
+            System.out.println(customer.getPhoneNumber().getType());
+            System.out.println(customer.getPhoneNumber().getDescription());
+        }
+        customerService.updateAll(list);
+        Container container1 = new Container();
+        container1.setList(customerService.listCustomers());
+        return container1;
     }
 }

@@ -2,10 +2,9 @@ DROP TABLE phonenumbers IF EXISTS;
 DROP TABLE customers IF EXISTS;
 
 CREATE TABLE customers (
-  id         INTEGER IDENTITY PRIMARY KEY,
+  id INTEGER IDENTITY PRIMARY KEY,
   phonenumber_id INTEGER,
   name VARCHAR(30),
-  lastname VARCHAR(30)
 );
 
 CREATE TABLE phonenumbers (

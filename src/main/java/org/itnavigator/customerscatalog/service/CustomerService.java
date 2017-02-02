@@ -11,9 +11,6 @@ public interface CustomerService {
 
     public List<Customer> listCustomers();
 
-    Customer getById(Integer id);
+    public void updateAll(List<Customer> list);
 
-    void create(Customer customer);
-
-    Customer update(Customer customer);
 }

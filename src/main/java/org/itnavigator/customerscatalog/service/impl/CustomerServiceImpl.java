@@ -22,25 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public Customer getById(Integer id) {
-        return this.customerDao.getById(id);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public void create(Customer customer) {
-        this.customerDao.create(customer);
-    }
-
-    @Override
-    @Transactional
-    public Customer update(Customer customer) {
-        return this.customerDao.update(customer);
-    }
-
-    @Override
-    @Transactional
     public List<Customer> listCustomers() {
         return this.customerDao.listCustomer();
+    }
+
+    @Override
+    @Transactional
+    public void updateAll(List<Customer> list) {
+        this.customerDao.updateAll(list);
     }
 }

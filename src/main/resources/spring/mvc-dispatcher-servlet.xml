@@ -61,15 +61,6 @@
         <property name="customerDao" ref="customerDao"/>
     </bean>
 
-    <!-- PhoneNumber dao -->
-    <bean id="phoneNumberDao" class="org.itnavigator.customerscatalog.dao.jpa.JpaPhoneNumberDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-
-    <!-- PhoneNumber service -->
-    <bean id="phoneNumberService" class="org.itnavigator.customerscatalog.service.impl.PhoneNumberServiceImpl">
-        <property name="phoneNumberDao" ref="phoneNumberDao"/>
-    </bean>
 
     <context:component-scan base-package="org.itnavigator.customerscatalog"/>
 

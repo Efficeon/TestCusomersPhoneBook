@@ -25,6 +25,9 @@ public class PhoneNumber {
     @Column(name = "type")
     private String type;
 
+    @OneToOne(mappedBy = "phoneNumber")
+    private Customer customer;
+
     public Integer getId() {
         return id;
     }
@@ -55,5 +58,29 @@ public class PhoneNumber {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PhoneNumber that = (PhoneNumber) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
