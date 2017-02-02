@@ -1,6 +1,6 @@
 package org.itnavigator.customerscatalog.controller;
 
-import org.itnavigator.customerscatalog.model.Container;
+import org.itnavigator.customerscatalog.model.CustomerContainer;
 import org.itnavigator.customerscatalog.model.Customer;
 import org.itnavigator.customerscatalog.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +20,19 @@ public class CustomerController {
     String allCustomers(Model model){
 
         List<Customer> list = customerService.listCustomers();
-        Container containerList = new Container();
-        containerList.setList(list);
-        model.addAttribute("container", containerList);
+        CustomerContainer customerContainerList = new CustomerContainer();
+        customerContainerList.setList(list);
+        model.addAttribute("customerContainer", customerContainerList);
         return "customers";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
-    Container updateAll(@RequestBody Container container){
-        List<Customer> list = container.getList();
+    CustomerContainer updateAll(@RequestBody CustomerContainer customerContainer){
+        List<Customer> list = customerContainer.getList();
         customerService.updateAll(list);
-        Container containerTemp = new Container();
-        containerTemp.setList(customerService.listCustomers());
-        return containerTemp;
+        CustomerContainer customerContainerTemp = new CustomerContainer();
+        customerContainerTemp.setList(customerService.listCustomers());
+        return customerContainerTemp;
     }
 }

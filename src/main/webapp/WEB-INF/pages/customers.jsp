@@ -10,22 +10,22 @@
 </head>
 <body>
 <table id="table">
-    <form:form method="POST" commandName="container" action="update"  onsubmit="return false">
+    <form:form method="POST" commandName="customerContainer" action="update"  onsubmit="return false">
     <tr>
         <th>Full name</th>
         <th>Phone Number</th>
         <th>Type</th>
         <th>Description</th>
     </tr>
-    <c:forEach var="container" items="${container.list}"
+    <c:forEach var="customerContainer" items="${customerContainer.list}"
                varStatus="status">
         <tr>
             <td><form:input readonly="true"
                             path="list[${status.index}].name"
-                            value="${container.name}" class="form-control" /></td>
+                            value="${customerContainer.name}" class="form-control" /></td>
             <td><form:input
                     path="list[${status.index}].phoneNumber.number"
-                    value="${container.phoneNumber.number}" class="form-control"/></td>
+                    value="${customerContainer.phoneNumber.number}" class="form-control"/></td>
             <td><form:select
                     path="list[${status.index}].phoneNumber.type">
                 <form:option value="mob">mob</form:option>
@@ -35,16 +35,16 @@
             </td>
             <td><form:input
                     path="list[${status.index}].phoneNumber.description"
-                    value="${container.phoneNumber.description}" class="form-control"/></td>
+                    value="${customerContainer.phoneNumber.description}" class="form-control"/></td>
 
             <form:input style="display:none;"
                      path="list[${status.index}].id"
-                     value="${container.id}" class="form-control"/>
+                     value="${customerContainer.id}" class="form-control"/>
 
             <form:input style="display:none;"
                      path="list[${status.index}].phoneNumber.id"
-                     value="${container.phoneNumber.id}" class="form-control"/></td>
-
+                     value="${customerContainer.phoneNumber.id}" class="form-control"/></td>
+</tr>
     </c:forEach>
 </table>
 <input type="submit" value="Update" class="btn btn-lg btn-success" onclick="searchAjax()">

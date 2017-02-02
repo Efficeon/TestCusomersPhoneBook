@@ -1,6 +1,6 @@
 function tableToJSON(){
-    var container = new Object();
-    container.list = [];
+    var customerContainer = new Object();
+    customerContainer.list = [];
     var list;
 
     for(i = 0; i <document.getElementById("table").rows.length-1; i++) {
@@ -13,9 +13,9 @@ function tableToJSON(){
                       },
                       "name": document.getElementById("list"+i+".name").value
                       };
-        container.list.push(client);
+        customerContainer.list.push(client);
     }
-    return JSON.stringify(container);
+    return JSON.stringify(customerContainer);
     };
 
 function searchAjax() {

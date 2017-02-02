@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by lion on 02.02.17.
  */
-public class Container {
+public class CustomerContainer {
     List<Customer> list;
 
     public List<Customer> getList() {

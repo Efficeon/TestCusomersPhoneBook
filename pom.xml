@@ -14,6 +14,8 @@
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <hibernate.version>4.3.2.Final</hibernate.version>
         <hsqldb.version>2.3.3</hsqldb.version>
+        <jstl.version>1.2</jstl.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
     </properties>
 
     <dependencies>
@@ -69,7 +71,7 @@
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
+            <version>${commons-dbcp.version}</version>
         </dependency>
 
         <!-- Logging -->
@@ -131,7 +133,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
         <!--  JSON  -->
         <dependency>
@@ -143,26 +145,6 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160810</version>
-        </dependency>
-        <!-- Test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>2.4.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework-version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -212,7 +194,7 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.13</version>
-            </plugin>
+           </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
