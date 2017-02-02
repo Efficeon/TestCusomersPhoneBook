@@ -17,7 +17,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @RequestMapping("/")
-    String test(Model model){
+    String allCustomers(Model model){
 
         List<Customer> list = customerService.listCustomers();
         Container containerList = new Container();
@@ -29,14 +29,6 @@ public class CustomerController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     String update(@ModelAttribute Container container){
         List<Customer> list = container.getList();
-        for (Customer customer : list){
-            System.out.println(customer.getId());
-            System.out.println(customer.getName());
-            System.out.println(customer.getPhoneNumber().getId());
-            System.out.println(customer.getPhoneNumber().getNumber());
-            System.out.println(customer.getPhoneNumber().getType());
-            System.out.println(customer.getPhoneNumber().getDescription());
-        }
         customerService.updateAll(list);
         System.out.println(list.toString());
         return "redirect:/";
@@ -46,14 +38,6 @@ public class CustomerController {
     @ResponseBody
     Container updateAll(@RequestBody Container container){
         List<Customer> list = container.getList();
-        for (Customer customer : list){
-            System.out.println(customer.getId());
-            System.out.println(customer.getName());
-            System.out.println(customer.getPhoneNumber().getId());
-            System.out.println(customer.getPhoneNumber().getNumber());
-            System.out.println(customer.getPhoneNumber().getType());
-            System.out.println(customer.getPhoneNumber().getDescription());
-        }
         customerService.updateAll(list);
         Container container1 = new Container();
         container1.setList(customerService.listCustomers());

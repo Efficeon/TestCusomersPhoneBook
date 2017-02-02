@@ -74,9 +74,7 @@ public class PhoneNumber {
         if (o == null || getClass() != o.getClass()) return false;
 
         PhoneNumber that = (PhoneNumber) o;
-
         return id != null ? id.equals(that.id) : that.id == null;
-
     }
 
     @Override

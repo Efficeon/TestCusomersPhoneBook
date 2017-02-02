@@ -1,4 +1,4 @@
-package org.itnavigator.customerscatalog.service.impl;
+package org.itnavigator.customerscatalog.service;
 
 import org.itnavigator.customerscatalog.dao.CustomerDao;
 import org.itnavigator.customerscatalog.model.Customer;

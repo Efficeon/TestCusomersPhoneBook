@@ -1,6 +1,5 @@
-package org.itnavigator.customerscatalog.dao.jpa;
+package org.itnavigator.customerscatalog.dao;
 
-import org.itnavigator.customerscatalog.dao.CustomerDao;
 import org.itnavigator.customerscatalog.model.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,24 +30,12 @@ public class JpaCustomerDaoImpl implements CustomerDao {
         for (Customer customer : customerList) {
             logger.info("Customer customer: " + customer);
         }
-
         return customerList;
     }
 
-    public Customer getById(Integer id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        Customer customer = (Customer) session.load(Customer.class, new Integer(id));
-
-        logger.info("Customer successfully loaded. Customer details: " + customer);
-
-        return customer;
-    }
     @Override
     public void updateAll(List<Customer> list) {
         for (Customer customer : list){
-            Customer customer1 = getById(customer.getId());
-            System.out.println(customer.equals(customer1));
-
             this.sessionFactory.getCurrentSession().merge(customer);
             logger.info("Customer successfully updated. Customer details: " + customer);
         }

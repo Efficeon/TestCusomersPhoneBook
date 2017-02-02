@@ -52,12 +52,12 @@
     </jdbc:initialize-database>
 
     <!-- Customer dao -->
-    <bean id="customerDao" class="org.itnavigator.customerscatalog.dao.jpa.JpaCustomerDaoImpl">
+    <bean id="customerDao" class="org.itnavigator.customerscatalog.dao.JpaCustomerDaoImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
 
     <!-- Customer service -->
-    <bean id="customerService" class="org.itnavigator.customerscatalog.service.impl.CustomerServiceImpl">
+    <bean id="customerService" class="org.itnavigator.customerscatalog.service.CustomerServiceImpl">
         <property name="customerDao" ref="customerDao"/>
     </bean>
 

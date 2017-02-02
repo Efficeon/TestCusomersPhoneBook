@@ -18,8 +18,8 @@ public class Customer {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "phonenumber_id")
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="phonenumber_id", updatable = false, insertable = false)
     private PhoneNumber phoneNumber;
 
     public Integer getId() {

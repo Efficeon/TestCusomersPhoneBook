@@ -1,5 +1,5 @@
 /* Customer */
-INSERT INTO customers VALUES (1, 2, 'Custome1');
+INSERT INTO customers VALUES (1, 2, 'Customer1');
 INSERT INTO customers VALUES (2, 3, 'Customer2');
 INSERT INTO customers VALUES (3, 1, 'Customer3');
 
