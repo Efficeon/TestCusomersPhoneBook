@@ -55,7 +55,6 @@ public class Customer {
 
         if (id != customer.id) return false;
         return name != null ? name.equals(customer.name) : customer.name == null;
-
     }
 
     @Override

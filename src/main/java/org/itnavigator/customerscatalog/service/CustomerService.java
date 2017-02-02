@@ -12,5 +12,4 @@ public interface CustomerService {
     public List<Customer> listCustomers();
 
     public void updateAll(List<Customer> list);
-
 }
