@@ -34,7 +34,7 @@
             $.ajax({
                 type : "POST",
                 contentType : "application/json",
-                url : "updateAll",
+                url : "/",
                 data : tableToJSON(),
                 //dataType : 'json',
                 timeout : 100000,

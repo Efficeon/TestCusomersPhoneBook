@@ -26,13 +26,13 @@ public class CustomerController {
         return "customers";
     }
 
-    @RequestMapping(value = "/updateAll", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     Container updateAll(@RequestBody Container container){
         List<Customer> list = container.getList();
         customerService.updateAll(list);
-        Container container1 = new Container();
-        container1.setList(customerService.listCustomers());
-        return container1;
+        Container containerTemp = new Container();
+        containerTemp.setList(customerService.listCustomers());
+        return containerTemp;
     }
 }
